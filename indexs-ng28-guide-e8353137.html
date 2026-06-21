@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng28 · 一处安静的入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f4f9fc;
+            color: #1b2f3b;
+            line-height: 1.7;
+            padding: 2rem 1.2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* 开场短句 — 轻柔呼吸感 */
+        .hero-tag {
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            color: #2c7a85;
+            background: rgba(44, 122, 133, 0.07);
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            border-radius: 30px;
+            margin-bottom: 1.2rem;
+            font-weight: 450;
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 500;
+            line-height: 1.2;
+            color: #0b3b44;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: #3e5f6b;
+            max-width: 620px;
+            margin-bottom: 2rem;
+        }
+
+        /* 承接段落 — 卡片网格 */
+        .story-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem 1.8rem;
+            box-shadow: 0 8px 20px rgba(0, 40, 50, 0.04), 0 2px 6px rgba(0, 60, 70, 0.02);
+            margin-bottom: 2.4rem;
+            border: 1px solid rgba(44, 122, 133, 0.08);
+            transition: box-shadow 0.2s;
+        }
+
+        .story-card:hover {
+            box-shadow: 0 12px 28px rgba(0, 60, 70, 0.06);
+        }
+
+        .story-card p {
+            margin-bottom: 1.1rem;
+            font-size: 1rem;
+            color: #1f3844;
+        }
+
+        .story-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .story-card a {
+            color: #1f7a8c;
+            text-decoration: none;
+            font-weight: 470;
+            border-bottom: 1px dotted #8fc1cb;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .story-card a:hover {
+            border-bottom: 1px solid #1f7a8c;
+            color: #0b4f5e;
+        }
+
+        /* 特点列表 — 网格卡片，蓝绿色点缀 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0 1.8rem;
+        }
+
+        .feature-item {
+            background: #ebf5f7;
+            border-radius: 20px;
+            padding: 1.2rem 1rem 1rem 1rem;
+            border-left: 4px solid #3fa6b5;
+            transition: background 0.15s;
+        }
+
+        .feature-item:hover {
+            background: #e0f0f3;
+        }
+
+        .feature-item .icon {
+            font-size: 1.3rem;
+            display: inline-block;
+            margin-bottom: 0.1rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #0b3b44;
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #2f4f5c;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* 温和引用 / 提示 */
+        .note-box {
+            background: #daeef3;
+            border-radius: 18px;
+            padding: 1.3rem 1.6rem;
+            margin: 2rem 0 1.6rem;
+            font-size: 0.95rem;
+            color: #17424e;
+            border: 1px solid #b2d6df;
+        }
+
+        .note-box strong {
+            color: #0b4f5e;
+            font-weight: 500;
+        }
+
+        /* FAQ 摘要 — 极简风格 */
+        .faq-mini {
+            margin: 2.2rem 0 1.2rem;
+        }
+
+        .faq-mini summary {
+            cursor: pointer;
+            font-weight: 480;
+            color: #1f7a8c;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #d0e3e9;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .faq-mini summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-mini summary::before {
+            content: "▸";
+            color: #3fa6b5;
+            font-size: 1.2rem;
+            transition: transform 0.15s;
+        }
+
+        .faq-mini details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .faq-mini details p {
+            margin: 0.6rem 0 0.8rem 1.6rem;
+            font-size: 0.95rem;
+            color: #1f3844;
+            background: #f2fafd;
+            padding: 0.6rem 1rem;
+            border-radius: 12px;
+        }
+
+        .faq-mini details:not(:last-child) {
+            margin-bottom: 0.2rem;
+        }
+
+        /* 温和结尾 */
+        .gentle-end {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #c8dee6;
+            font-size: 0.95rem;
+            color: #2e5664;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .gentle-end small {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 640px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .story-card {
+                padding: 1.5rem 1.2rem;
+            }
+
+            .hero-sub {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero-title {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 开场短句 -->
+        <div class="hero-tag">✦ 慢慢来，比较快</div>
+        <h1 class="hero-title">一个安静的入口<br>比你想的更近</h1>
+        <p class="hero-sub">有些页面不需要喧哗，只需要被需要的人找到。这里没有弹窗与横幅，只有一条通往 <a href="https://indexs-ng28.com" style="color:#1f7a8c;text-decoration:underline dotted;">ng28</a> 的稳定路径。</p>
+
+        <!-- 承接段落 + 嵌入链接 -->
+        <div class="story-card">
+            <p>第一次遇见 <a href="https://indexs-ng28.com">ng28</a> 的人，常常会问：这是做什么的？其实答案很简单——它是一个索引，一个位置，一个你不必翻遍收藏夹就能找到的地方。很多时候，我们需要的只是一个不绕弯子的起点。</p>
+            <p>页面保持干净、克制，没有多余的装饰。如果你恰好需要这个方向，<a href="https://indexs-ng28.com">ng28</a> 会一直等在那里。不催促，不打扰。</p>
+        </div>
+
+        <!-- 特点列表：网格卡片 -->
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="icon">🪧</div>
+                <h3>清晰的指向</h3>
+                <p>没有多余跳转，一次点击就是你要找的位置。入口稳定，不易迷失。</p>
+            </div>
+            <div class="feature-item">
+                <div class="icon">🧩</div>
+                <h3>轻量无负担</h3>
+                <p>页面加载轻盈，不堆积脚本和追踪器。适合任何网络环境。</p>
+            </div>
+            <div class="feature-item">
+                <div class="icon">🌿</div>
+                <h3>低视觉噪音</h3>
+                <p>蓝绿配色温和，卡片留白充分。阅读体验接近自然纸张。</p>
+            </div>
+            <div class="feature-item">
+                <div class="icon">📌</div>
+                <h3>长期可用</h3>
+                <p>基于稳定结构维护，不会突然更改地址或消失。适合放入书签。</p>
+            </div>
+        </div>
+
+        <!-- 场景提示 -->
+        <div class="note-box">
+            <strong>▸ 适合放在哪里？</strong> 浏览器书签栏、笔记软件内部链接、个人导航页、团队共享文档。只要你想快速回到 <a href="https://indexs-ng28.com">ng28</a>，一个链接就够了。
+        </div>
+
+        <!-- FAQ 摘要（极简） -->
+        <div class="faq-mini">
+            <details>
+                <summary>这个页面和 ng28 是什么关系？</summary>
+                <p>这是一个介绍性的入口页面，帮助你了解 <a href="https://indexs-ng28.com">ng28</a> 的基本用途和风格。如果你已经熟悉，可以直接使用链接。</p>
+            </details>
+            <details>
+                <summary>链接会不会变化？</summary>
+                <p>不会。该地址保持长期指向，你可以放心收录或分享。如有调整会提前说明。</p>
+            </details>
+            <details>
+                <summary>为什么强调“稳定入口”？</summary>
+                <p>因为很多服务频繁更换域名或页面结构，导致收藏夹失效。我们希望 <a href="https://indexs-ng28.com">ng28</a> 成为一个可持续的坐标。</p>
+            </details>
+        </div>
+
+        <!-- 温和结尾 -->
+        <div class="gentle-end">
+            <span>感谢你花时间读到这里。希望你用得顺手。</span>
+            <small>如果你觉得有用，不妨把 <a href="https://indexs-ng28.com" style="color:#1f7a8c;">ng28</a> 留在手边。</small>
+        </div>
+    </div>
+</body>
+</html>
