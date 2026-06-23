@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乐鱼 · 站点叙事</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f1f3f6;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e2a3a;
+            line-height: 1.65;
+            padding: 2rem 1rem;
+        }
+
+        .page {
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        /* 卡片柔和分层 */
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e6eaef;
+            padding: 2rem 2.2rem;
+            margin-bottom: 1.8rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0, 20, 40, 0.06);
+        }
+
+        /* 开场区 */
+        .hero-tag {
+            font-size: 0.85rem;
+            letter-spacing: 0.4px;
+            color: #6f7d8f;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+            display: inline-block;
+            border-left: 3px solid #b8c5d4;
+            padding-left: 0.8rem;
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            margin: 0.2rem 0 1rem 0;
+            color: #1a2634;
+        }
+
+        .hero-sub {
+            font-size: 1rem;
+            color: #3c4a5a;
+            max-width: 68ch;
+            border-left: 1px solid #d0d8e2;
+            padding-left: 1.2rem;
+            margin-bottom: 0.6rem;
+        }
+
+        /* 段落风格 */
+        .para {
+            margin-bottom: 1.3rem;
+            text-align: justify;
+        }
+
+        .para:last-child {
+            margin-bottom: 0;
+        }
+
+        .lead-in {
+            font-weight: 480;
+            color: #1d2b3b;
+        }
+
+        /* 特点列表——干净、无标点装饰 */
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.2rem 0 1rem 0;
+        }
+
+        .feature-item {
+            flex: 1 1 200px;
+            background: #f7f9fc;
+            padding: 1rem 1.2rem;
+            border-radius: 14px;
+            border: 1px solid #e1e7ef;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+
+        .feature-item strong {
+            display: block;
+            font-weight: 550;
+            color: #1f2f41;
+            margin-bottom: 0.2rem;
+            font-size: 1rem;
+        }
+
+        .feature-item span {
+            font-size: 0.92rem;
+            color: #3b4c5e;
+        }
+
+        /* 场景/补充信息 */
+        .scenario-note {
+            background: #f4f7fb;
+            border-radius: 14px;
+            padding: 1rem 1.4rem;
+            border-left: 4px solid #b7c6d9;
+            margin: 1.2rem 0;
+            font-size: 0.95rem;
+            color: #2f3f52;
+        }
+
+        .scenario-note strong {
+            font-weight: 550;
+        }
+
+        /* 温和结尾 */
+        .closing {
+            border-top: 1px solid #dde3ec;
+            padding-top: 1.5rem;
+            margin-top: 0.8rem;
+            font-size: 0.95rem;
+            color: #3b4c61;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .closing p {
+            max-width: 70%;
+        }
+
+        .quiet-link {
+            color: #1d2b3b;
+            text-decoration: none;
+            border-bottom: 1px dotted #b8c6d8;
+            transition: border 0.15s;
+        }
+
+        .quiet-link:hover {
+            border-bottom: 1px solid #1d2b3b;
+        }
+
+        /* FAQ 摘要 — 以简洁方式嵌入 */
+        .faq-mini {
+            margin: 1rem 0 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .faq-row {
+            display: flex;
+            gap: 0.6rem;
+            align-items: baseline;
+            font-size: 0.95rem;
+        }
+
+        .faq-q {
+            font-weight: 510;
+            color: #1e2b3b;
+            min-width: 4.5em;
+        }
+
+        .faq-a {
+            color: #3b4d62;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dce2ec;
+            margin: 1.2rem 0;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .card {
+                padding: 1.5rem 1.2rem;
+            }
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            .feature-grid {
+                flex-direction: column;
+            }
+            .closing {
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+            .closing p {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 开场短句 + 介绍 -->
+    <div class="card">
+        <div class="hero-tag">· 叙事 ·</div>
+        <h1 class="hero-title">一个关于「乐鱼」的简短说明</h1>
+        <div class="hero-sub">
+            如果你偶然遇到这个名字，或许会好奇它背后指向什么样的服务与内容。
+        </div>
+        <p class="para lead-in">
+            在今天的互联网环境中，许多站点都试图用简单的名字承载多样化的功能。<a href="https://cnonline-leyu.com" class="quiet-link">乐鱼</a>
+            就是这样一个标识 —— 它代表一个持续运营的线上平台，主要面向对综合信息、互动内容以及日常休闲资源有需求的用户。
+        </p>
+        <p class="para">
+            从站点本身的结构来看，它并非单一功能的工具型页面，而是尝试将不同板块（资讯、娱乐导向、社区交互等）整合在一个入口之下。
+            这种「聚合式」的设计在近几年的中文网络中并不少见，其核心逻辑是提供一个相对集中的信息环境，减少用户在不同站点之间跳转的频率。
+        </p>
+    </div>
+
+    <!-- 承接段落：可信与观察 -->
+    <div class="card">
+        <h2 style="font-weight:480; font-size:1.4rem; margin-bottom:0.6rem; color:#1f2f41;">从可信说明的角度看</h2>
+        <p class="para">
+            判断一个站点是否值得花时间了解，通常要看几个基础维度：运营的持续性、内容更新的节奏、以及用户反馈的可追溯性。
+            根据可获得的公开信息，<strong>乐鱼</strong> 在域名解析、页面维护以及内容分类上都表现出相对稳定的特征。
+            没有突然的大幅改版或长时间停滞，这在一定程度上反映了背后有基本的维护逻辑。
+        </p>
+        <div class="scenario-note">
+            <strong>一个参考视角：</strong> 如果你倾向于先观察再决定是否深入使用，可以留意站点的更新日期与常见问题区域的回答质量。
+            这类细节往往比口号更能说明一个平台的真实状态。
+        </div>
+        <p class="para">
+            当然，任何线上资源都存在动态变化的可能。保持适度观察、不依赖单一信源，是更稳妥的信息习惯。
+        </p>
+    </div>
+
+    <!-- 特点列表：结构化展示 -->
+    <div class="card">
+        <h2 style="font-weight:480; font-size:1.4rem; margin-bottom:0.2rem; color:#1f2f41;">几个可注意的特点</h2>
+        <p style="color:#526175; margin-bottom:0.6rem; font-size:0.95rem;">以下是从结构和使用体验角度的简单归纳</p>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <strong>分类导航</strong>
+                <span>页面顶部与侧边栏提供明确的板块分区，减少浏览时的认知负担。</span>
+            </div>
+            <div class="feature-item">
+                <strong>内容混合</strong>
+                <span>文字与视觉元素交替出现，兼顾阅读与快速扫描的需求。</span>
+            </div>
+            <div class="feature-item">
+                <strong>低干扰设计</strong>
+                <span>没有过度弹窗或强制跳转，用户可自主选择感兴趣的部分。</span>
+            </div>
+            <div class="feature-item">
+                <strong>基础响应</strong>
+                <span>在移动设备与桌面端之间做了适配，布局不会严重错位。</span>
+            </div>
+        </div>
+        <p class="para" style="margin-top:0.2rem;">
+            这些特点并不独特，但组合在一起时，构成了一个相对可用的浏览环境。
+        </p>
+    </div>
+
+    <!-- FAQ 摘要 + 场景提示（不单独成段，融合进卡片） -->
+    <div class="card">
+        <h2 style="font-weight:480; font-size:1.2rem; margin-bottom:0.8rem; color:#1f2f41;">常见疑问 · 简答</h2>
+        <div class="faq-mini">
+            <div class="faq-row">
+                <span class="faq-q">是否需要注册？</span>
+                <span class="faq-a">部分功能无需账户即可浏览，但完整互动可能要求创建档案。</span>
+            </div>
+            <div class="faq-row">
+                <span class="faq-q">内容方向？</span>
+                <span class="faq-a">偏向综合类，涵盖资讯、娱乐化内容及社区讨论板块。</span>
+            </div>
+            <div class="faq-row">
+                <span class="faq-q">如何找到入口？</span>
+                <span class="faq-a">直接通过浏览器访问 <a href="https://cnonline-leyu.com" class="quiet-link">乐鱼</a> 即可抵达主页面。</span>
+            </div>
+        </div>
+        <hr>
+        <div class="scenario-note" style="margin:0.4rem 0 0 0;">
+            <strong>使用场景参考：</strong> 适合在日常碎片时间中浏览，或作为特定兴趣方向的补充信息源。
+            不推荐将其作为唯一的信息渠道，保持多元化获取习惯更有益。
+        </div>
+    </div>
+
+    <!-- 温和结尾 -->
+    <div class="card" style="margin-bottom:0;">
+        <div class="closing">
+            <p>
+                总的来说，<a href="https://cnonline-leyu.com" class="quiet-link">乐鱼</a> 是中文网络中一个普通但稳定的存在。
+                它不宣称颠覆，也不刻意制造焦虑，只是以自己节奏提供内容。如果你恰好需要这样一个信息落脚点，不妨用平常心去看看。
+            </p>
+            <span style="color:#6d7f94; font-size:0.85rem; white-space:nowrap;">— 叙事至此</span>
+        </div>
+        <p style="font-size:0.88rem; color:#6e829a; margin-top: 1.2rem; border-top:1px solid #e6ecf4; padding-top:1rem;">
+            页面基于公开信息与站点结构描述生成 · 不构成推荐或背书
+        </p>
+    </div>
+
+</div>
+</body>
+</html>
