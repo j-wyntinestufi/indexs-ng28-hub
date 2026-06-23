@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>信息切口 · 乐鱼</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2f2f2;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+      color: #2c2f33;
+      line-height: 1.7;
+      padding: 2rem 1rem 4rem;
+      min-height: 100vh;
+    }
+
+    .page-wrapper {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* header */
+    .site-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .site-header h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #1e1f22;
+      border-left: 5px solid #e0a87c;
+      padding-left: 1rem;
+    }
+
+    .site-header p {
+      margin-top: 0.6rem;
+      color: #5c5f66;
+      font-size: 1rem;
+      padding-left: 1.3rem;
+    }
+
+    /* 卡片通用 */
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid #e6e6e6;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.03);
+      padding: 1.8rem 2rem;
+      margin-bottom: 2rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: #222426;
+      letter-spacing: -0.01em;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin-top: 1.6rem;
+      margin-bottom: 0.4rem;
+      color: #2c2f33;
+    }
+
+    .card p {
+      margin-bottom: 1rem;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .meta-line {
+      display: block;
+      color: #7f8288;
+      font-size: 0.85rem;
+      margin-bottom: 1.2rem;
+      border-bottom: 1px dashed #e0e0e0;
+      padding-bottom: 0.6rem;
+    }
+
+    /* 引用块 */
+    .inline-quote {
+      background: #f7f5f2;
+      border-left: 4px solid #d4b999;
+      padding: 1rem 1.5rem;
+      margin: 1.4rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: normal;
+      color: #3d4047;
+    }
+
+    .inline-quote::before {
+      content: "💡 整理者说";
+      display: block;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.03em;
+      color: #8f7b66;
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.8rem;
+      margin: 1.2rem 0 0.2rem;
+    }
+
+    .tag {
+      background: #efedea;
+      padding: 0.2rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      color: #4a4d54;
+    }
+
+    .faq-item {
+      margin-top: 1.4rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid #eeeeee;
+    }
+
+    .faq-item:first-of-type {
+      border-top: none;
+      margin-top: 0.5rem;
+      padding-top: 0;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      color: #1e1f22;
+    }
+
+    .faq-a {
+      color: #3f4249;
+      margin-top: 0.2rem;
+    }
+
+    .visit-sentence {
+      font-size: 1.05rem;
+      background: #f9f8f6;
+      padding: 1.2rem 1.8rem;
+      border-radius: 40px;
+      text-align: center;
+      border: 1px solid #e1ddd8;
+      margin: 1.8rem 0 0.5rem;
+    }
+
+    .visit-sentence a {
+      color: #b07f5a;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid #dccfc2;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .visit-sentence a:hover {
+      color: #8f623e;
+      border-bottom-color: #b07f5a;
+    }
+
+    .footer-note {
+      margin-top: 3rem;
+      text-align: center;
+      color: #9a9ea6;
+      font-size: 0.8rem;
+      border-top: 1px solid #e0e0e0;
+      padding-top: 2rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      body {
+        padding: 1.2rem 0.8rem 3rem;
+      }
+      .card {
+        padding: 1.4rem 1.2rem;
+      }
+      .site-header h1 {
+        font-size: 1.8rem;
+      }
+      .visit-sentence {
+        font-size: 0.95rem;
+        padding: 1rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <header class="site-header">
+    <h1>资料索引 · 乐鱼</h1>
+    <p>从信息整理到日常检索，一个安静的存放地</p>
+  </header>
+
+  <!-- 文章式主卡片 -->
+  <article class="card">
+    <h2>整理不是归档，是重新理解</h2>
+    <span class="meta-line">笔记 · 2025 · 日常索引</span>
+
+    <p>开始在电脑里建文件夹时，我只是想把散落在各个网页的书签和截图收拢起来。后来发现，真正重要的不是归到什么目录，而是每次翻看时，那些内容又活了一次。这就是<a href="https://home-m-leyu.com" style="color:#b07f5a; text-decoration:none; border-bottom:1px solid #dccfc2;">乐鱼</a>给我的感觉——它不像一个冷冰冰的存储点，更像一个你常去的书架，你知道哪几本放在顺手的位置。</p>
+
+    <p>做资料整理的人多半有点「收集癖」，但收集本身不产生价值，连接才产生。比如某天要找一段关于社区设计的旧文，你记得标题里有「参与」两个字，却忘了存到哪个分类。这时候索引的意义就浮现了：它不替你记忆，但替你缩短找记忆的时间。</p>
+
+    <div class="inline-quote">
+      我习惯把常用链接和笔记碎片放在一个固定的地方，每次访问<a href="https://home-m-leyu.com" style="color:#8a6f55; text-decoration:underline;">乐鱼</a>，就像打开一个可翻阅的抽屉。不用记住路径，只要记得那里有。
+    </div>
+
+    <p>一年多前我开始用 Notion 做个人资料库，后来觉得太笨重，又尝试过本地 Markdown 文件夹。最终发现，一个轻量、稳定、不需要反复登录的页面才是最舒服的容器。它不必花哨，但响应快、结构清晰、能让我在五分钟内定位到想要的东西。</p>
+
+    <h3>三个日常使用场景</h3>
+    <p><strong>场景一：</strong>周末想写一篇关于城市步道的随笔，之前收集的十几个参考链接和照片散落在各处。通过整理页的标签索引，五分钟内就能拉出所有相关条目，省去反复翻聊天记录的时间。</p>
+    <p><strong>场景二：</strong>工作间隙想读一篇长文，又不想被社交消息打断。把链接集中到一个安静的页面，阅读本身变成一种仪式感。</p>
+    <p><strong>场景三：</strong>偶尔朋友问起某个工具或书单，直接把整理好的页面发过去，不需要再解释「在我收藏夹第好几个文件夹里」。</p>
+
+    <div class="tag-list">
+      <span class="tag">信息整理</span>
+      <span class="tag">索引结构</span>
+      <span class="tag">轻工作流</span>
+      <span class="tag">日常记录</span>
+    </div>
+  </article>
+
+  <!-- 第二块卡片：FAQ 摘要+提示 -->
+  <section class="card">
+    <h2>一些常见疑问与提示</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Q：这个页面适合存放什么类型的资料？</div>
+      <div class="faq-a">A：任何你希望以「条目」形式快速回顾的内容——工具文档摘录、书影音备注、灵感碎片、实用网址。不适合大文件托管或实时协作。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q：整理会不会耗费很多时间？</div>
+      <div class="faq-a">A：初期搭建骨架可能花半小时，后续每次添加一两分钟。关键是不追求完美分类，够用就好。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q：如何保证长期可用？</div>
+      <div class="faq-a">A：选择简单、稳定的载体。静态页面配合基本结构，不需要数据库也不用担心平台改版。记得偶尔备份源文件。</div>
+    </div>
+
+    <!-- 访问句自然嵌入，不重复“进入”等词，a标签文本仅为“乐鱼” -->
+    <div class="visit-sentence">
+      如果你也习惯把资料摊开整理，可以试试 <a href="https://home-m-leyu.com">乐鱼</a> 这个安静的角落。
+    </div>
+
+    <p style="margin-top:0.8rem;font-size:0.9rem;color:#767a82;">提示：每次添加新条目时，不妨加一两个标签或一段简注，未来检索时会更顺手。</p>
+  </section>
+
+  <!-- 短结语 -->
+  <div class="footer-note">
+    <p>索引是第二次阅读 · 整理即思考</p>
+    <p style="margin-top:0.3rem;">记录于一个普通的工作日</p>
+  </div>
+
+</div>
+</body>
+</html>
